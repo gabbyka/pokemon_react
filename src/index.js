@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-function Greeting(props) {
-  return <span {...props} />;
+function PokemonListItem(props) {
+  return <li className="pokemon" {...props} />;
 }
 
 function App() {
@@ -12,8 +12,11 @@ function App() {
         <span role="img" aria-label="React holiday">
           ⚛️🎄
         </span>
-        : Day 0
+        : Day 1
       </h1>
+      <ul>
+        <PokemonListItem>Pokemon</PokemonListItem>
+      </ul>
     </div>
   );
 }

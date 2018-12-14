@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 function PokemonListItem(props) {
-  return <li className="pokemon" {...props} />;
+  return <li {...props} />;
 }
 
 function App() {
@@ -15,7 +15,8 @@ function App() {
         : Day 1
       </h1>
       <ul>
-        <PokemonListItem>Pokemon</PokemonListItem>
+        <PokemonListItem>Pokemon jeee</PokemonListItem>
+        <PokemonListItem>Pokemon jeee</PokemonListItem>
       </ul>
     </div>
   );

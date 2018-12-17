@@ -5,6 +5,12 @@ function PokemonListItem(props) {
   return <li {...props} />;
 }
 
+let characterData = [
+  { name: "blueOne" },
+  { name: "redOne" },
+  { name: "yellowOne" }
+];
+
 function App() {
   return (
     <div>
@@ -12,11 +18,12 @@ function App() {
         <span role="img" aria-label="React holiday">
           ⚛️🎄
         </span>
-        : Day 1
+        : Day 2
       </h1>
       <ul>
-        <PokemonListItem>Pokemon jeee</PokemonListItem>
-        <PokemonListItem>Pokemon jeee</PokemonListItem>
+        {characterData.map(item => (
+          <PokemonListItem>{item.name}</PokemonListItem>
+        ))}
       </ul>
     </div>
   );

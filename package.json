@@ -6,6 +6,7 @@
   "main": "src/index.js",
   "dependencies": {
     "react": "16.7.0-alpha.2",
+    "react-cache": "16.6.0-alpha.8af6728",
     "react-dom": "16.7.0-alpha.2",
     "react-scripts": "2.0.3"
   },
@@ -16,10 +17,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
 }

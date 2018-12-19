@@ -1,15 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { createCache, createResource } from "react-cache";
+
+let cache = createCache();
+
+let PokemonCollectionResource = createResource(() =>
+  fetch("https://pokeapi.co/api/v2/pokemon/").then(res => res.json())
+);
 
 function PokemonListItem(props) {
   return <li {...props} />;
 }
 
-let characterData = [
-  { name: "blueOne" },
-  { name: "redOne" },
-  { name: "yellowOne" }
-];
+function PokemonList() {
+  return (
+    <ul>
+      {PokemonCollectionResource.read(cache).results.map(pokemon => (
+        <PokemonListItem key={pokemon.name}>{pokemon.name}</PokemonListItem>
+      ))}
+    </ul>
+  );
+}
 
 function App() {
   return (
@@ -18,13 +29,11 @@ function App() {
         <span role="img" aria-label="React holiday">
           ⚛️🎄
         </span>
-        : Day 2
+        : Day 3
       </h1>
-      <ul>
-        {characterData.map(item => (
-          <PokemonListItem>{item.name}</PokemonListItem>
-        ))}
-      </ul>
+      <React.Suspense fallback={<div>...loading</div>}>
+        <PokemonList />
+      </React.Suspense>
     </div>
   );
 }

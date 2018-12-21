@@ -32,35 +32,42 @@ class ErrorBoundary extends React.Component {
 }
 
 let PokemonCollectionResource = createResource(() =>
-  fetch("https://pokeapi.co/api/v2/pokemon-blaa/").then(res => res.json())
+  fetch("https://pokeapi.co/api/v2/pokemon/").then(res => res.json())
 );
 
 function PokemonListItem(props) {
   return <li {...props} />;
 }
 
-function PokemonList() {
+function PokemonList({ onSelect }) {
   return (
     <ul>
       {PokemonCollectionResource.read().results.map(pokemon => (
-        <PokemonListItem key={pokemon.name}>{pokemon.name}</PokemonListItem>
+        <PokemonListItem
+          onClick={() => onSelect(pokemon.url.split("/")[6])}
+          key={pokemon.name}
+        >
+          {pokemon.name}
+        </PokemonListItem>
       ))}
     </ul>
   );
 }
 
 function App() {
+  let [selectedPokemonId, setSelectedPokemonId] = React.useState(1);
   return (
     <div>
       <h1>
         <span role="img" aria-label="React holiday">
           ⚛️🎄
         </span>
-        : Day 6
+        : Day 7
       </h1>
+      <strong>selected Pokemon id: {selectedPokemonId}</strong>
       <ErrorBoundary fallback={<div>Pokemon list loading broken</div>}>
         <React.Suspense fallback={<div>...loading</div>}>
-          <PokemonList />
+          <PokemonList onSelect={id => setSelectedPokemonId(id)} />
         </React.Suspense>
       </ErrorBoundary>
     </div>

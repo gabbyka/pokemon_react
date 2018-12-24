@@ -54,6 +54,9 @@ function PokemonList({ onSelect }) {
   );
 }
 
+function PokemonItem({ ...props }) {
+  return <h1 {...props} />;
+}
 function App() {
   let [selectedPokemonId, setSelectedPokemonId] = React.useState(1);
   return (
@@ -62,14 +65,19 @@ function App() {
         <span role="img" aria-label="React holiday">
           ⚛️🎄
         </span>
-        : Day 7
+        : Day 8
       </h1>
+      <PokemonItem id="some-id" className="some-class">
+        The Pokemon
+      </PokemonItem>
+      {/*
       <strong>selected Pokemon id: {selectedPokemonId}</strong>
       <ErrorBoundary fallback={<div>Pokemon list loading broken</div>}>
         <React.Suspense fallback={<div>...loading</div>}>
           <PokemonList onSelect={id => setSelectedPokemonId(id)} />
         </React.Suspense>
       </ErrorBoundary>
+      */}
     </div>
   );
 }
